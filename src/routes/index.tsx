@@ -338,12 +338,13 @@ function Experience() {
             (03) Experience
           </p>
           <h2 className="font-display text-5xl mt-4 leading-[1]">
-            A decade of doing the unglamorous, well.
+            A decade behind the scenes, keeping things running.
           </h2>
         </div>
         <p className="lg:col-span-8 text-muted-foreground self-end max-w-2xl">
-          Roles reframed for remote, virtual work — same responsibilities, translated into the
-          language of how I support clients today.
+          A decade spent behind the scenes keeping operations organized, customers supported and
+          data accurate. From five years in customer service to two years in data management, I've
+          built the skills businesses rely on in an Executive Virtual Assistant today.
         </p>
       </div>
 
