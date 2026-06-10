@@ -201,6 +201,14 @@ function Hero() {
             >
               See what I handle
             </a>
+            <a
+              href="/april-rose-deocampo-portfolio.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm hover:bg-foreground hover:text-background transition"
+            >
+              Download PDF
+              <span aria-hidden>↓</span>
+            </a>
           </div>
         </div>
 
