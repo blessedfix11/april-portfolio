@@ -80,11 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "April Rose Deocampo — General Virtual Assistant" },
       { name: "description", content: "Calm, dependable virtual assistant support: inbox & calendar care, client communications, data & CRM hygiene, and back-office workflows that quietly keep your business moving." },
       { name: "author", content: "April Rose T. Deocampo" },
-      { property: "og:title", content: "April Rose — General Virtual Assistant" },
-      { property: "og:description", content: "10+ years of administrative, customer-care and data work — now supporting founders and small teams as a remote General VA." },
+      { property: "og:title", content: "April Rose Deocampo — General Virtual Assistant" },
+      { property: "og:description", content: "Calm, dependable virtual assistant support: inbox & calendar care, client communications, data & CRM hygiene, and back-office workflows that quietly keep your business moving." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "April Rose Deocampo — General Virtual Assistant" },
+      { name: "twitter:description", content: "Calm, dependable virtual assistant support: inbox & calendar care, client communications, data & CRM hygiene, and back-office workflows that quietly keep your business moving." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c86e6746-72bf-44b0-bd56-b3d4d09a50d5/id-preview-001cfb74--144b4d85-0167-47d8-b1c5-692757dda102.lovable.app-1781093374078.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c86e6746-72bf-44b0-bd56-b3d4d09a50d5/id-preview-001cfb74--144b4d85-0167-47d8-b1c5-692757dda102.lovable.app-1781093374078.png" },
     ],
     links: [
       {
