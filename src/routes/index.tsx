@@ -497,7 +497,7 @@ function Footer() {
     <footer className="border-t border-border">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-10 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
         <p>© {new Date().getFullYear()} April Rose T. Deocampo — General Virtual Assistant.</p>
-        <p className="font-mono-quirk text-xs uppercase tracking-widest">Built with care · Manila ⇄ Worldwide</p>
+        <p className="font-mono-quirk text-xs uppercase tracking-widest">Built with care · PH-based VA ⇄ Worldwide</p>
       </div>
     </footer>
   );
