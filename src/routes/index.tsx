@@ -261,18 +261,25 @@ function About() {
       </div>
       <div className="lg:col-span-8 space-y-6 text-lg leading-relaxed text-foreground/85">
         <p>
-          I've spent the last decade somewhere between the customer and the calendar — first as an
-          Executive Secretary at a Manila jewellery house, then as a Customer Service Officer at
-          EMCOR Inc. handling warranty work for Samsung, Panasonic and Electrolux, and most recently
-          on the data side at <span className="font-medium">BIZCAP UK</span>.
+          For more than a decade, I've worked where customer experience, organization and operations
+          meet — from supporting executives in the jewellery industry, to managing warranty and
+          customer service operations for global brands like <span className="font-medium">Samsung, Panasonic and Electrolux</span>,
+          and later helping maintain accurate business data for a UK-based company.
         </p>
         <p>
-          Different industries, same instinct: <em className="italic">notice the small things, fix them before anyone has to ask.</em>
-          That's the job I love, and the one I now bring fully remote, as a General Virtual Assistant.
+          Different industries, same approach: <em className="italic">I pay attention to the details, solve problems before they become issues, and create systems that keep things running smoothly.</em>
+        </p>
+        <p>
+          Today, I bring that experience to my work as a General Virtual Assistant. I'm outgoing,
+          dependable and highly organized, with a natural ability to anticipate needs and keep
+          priorities moving forward.
         </p>
         <p className="text-muted-foreground">
-          Outgoing, optimistic, allergic to clutter. I work best with founders and small teams who
-          want a calm, trustworthy second brain rather than another moving part to manage.
+          I work best with founders, entrepreneurs and small teams who need more than just
+          administrative support — they need a calm, trustworthy second brain who can bring order to
+          the chaos, communicate with care, and help the business operate more efficiently. If you're
+          looking for someone who takes initiative, values accuracy, and genuinely enjoys helping
+          people succeed, I'd love to be part of your team.
         </p>
       </div>
     </section>
