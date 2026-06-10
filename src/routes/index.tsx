@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import portrait from "@/assets/april-rose.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -138,7 +139,11 @@ function Nav() {
     <header className="sticky top-0 z-40 backdrop-blur bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-4 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <span className="grid place-items-center w-9 h-9 rounded-full bg-foreground text-background font-display text-lg">a</span>
+          <img
+            src={portrait.url}
+            alt="April Rose Deocampo"
+            className="w-9 h-9 rounded-full object-cover border border-border"
+          />
           <span className="font-display text-lg">April Rose</span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
@@ -196,13 +201,28 @@ function Hero() {
             >
               See what I handle
             </a>
+            <a
+              href="/april-rose-deocampo-portfolio.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm hover:bg-foreground hover:text-background transition"
+            >
+              Download PDF
+              <span aria-hidden>↓</span>
+            </a>
           </div>
         </div>
 
         <aside className="lg:col-span-4 lg:pl-6 lg:border-l lg:border-border space-y-8">
+          <div className="relative">
+            <div className="absolute -inset-2 rounded-[2rem] bg-[var(--terracotta)]/15 rotate-3" />
+            <img
+              src={portrait.url}
+              alt="Portrait of April Rose Deocampo"
+              className="relative w-full aspect-square object-cover rounded-[2rem] border border-border"
+            />
+          </div>
           <Stat k="10+" v="years of admin & service experience" />
           <Stat k="3" v="industries — retail, jewellery, fintech" />
-          <Stat k="∞" v="inboxes brought back to zero" />
           <div className="rounded-2xl bg-card p-5 border border-border">
             <p className="font-mono-quirk text-[10px] uppercase tracking-widest text-muted-foreground">
               Currently
