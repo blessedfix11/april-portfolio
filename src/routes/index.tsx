@@ -167,7 +167,7 @@ function Hero() {
         <div className="lg:col-span-8">
           <div className="flex items-center gap-3 text-xs font-mono-quirk uppercase tracking-widest text-muted-foreground">
             <span className="w-2 h-2 rounded-full bg-[var(--sage)] animate-pulse" />
-            Available · Remote · Manila → Worldwide
+            Available · Remote · PH-based VA → Worldwide
           </div>
           <h1 className="font-display mt-6 text-[12vw] sm:text-7xl lg:text-[8.5rem] leading-[0.95] tracking-tighter">
             The quiet
@@ -177,10 +177,10 @@ function Hero() {
             <em className="italic text-[var(--terracotta)]">busy people.</em>
           </h1>
           <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
-            I'm <span className="text-foreground font-medium">April Rose</span> — a General Virtual Assistant with 10+ years
-            across customer care, executive support and data operations. I take the small,
-            recurring, easy-to-drop things off your plate so you can stay on the work that
-            actually grows the business.
+            I'm <span className="text-foreground font-medium">April Rose</span> — a General Virtual Assistant with 2 years
+            as a Data Entry Specialist, backed by a decade across customer care and executive
+            support. I take the small, recurring, easy-to-drop things off your plate so you can
+            stay on the work that actually grows the business.
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
