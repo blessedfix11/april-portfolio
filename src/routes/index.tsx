@@ -246,14 +246,14 @@ function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] text-white px-6 py-3 text-sm font-medium hover:translate-y-[-1px] transition"
+              className="click-pop relative overflow-hidden inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] text-white px-6 py-3 text-sm font-medium hover:translate-y-[-1px] transition"
             >
               Book a discovery call
               <span aria-hidden>↗</span>
             </a>
             <a
               href="#services"
-              className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm hover:bg-foreground hover:text-background transition"
+              className="click-pop relative overflow-hidden inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm hover:bg-foreground hover:text-background transition"
             >
               See what I handle
             </a>
@@ -368,7 +368,7 @@ function Services() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
           {services.map((s) => (
-            <article key={s.no} className="bg-card p-8 group hover:bg-background transition">
+            <article key={s.no} className="reveal bg-card p-8 group hover:bg-background transition">
               <div className="flex items-baseline justify-between">
                 <span className="font-mono-quirk text-xs text-muted-foreground">{s.no}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition text-[var(--terracotta)]">→</span>
@@ -413,7 +413,7 @@ function Experience() {
         {experience.map((job, i) => (
           <li
             key={i}
-            className="group grid lg:grid-cols-12 gap-6 lg:gap-10 p-6 lg:p-8 rounded-2xl border border-border hover:border-foreground/40 hover:bg-card transition"
+            className="reveal group grid lg:grid-cols-12 gap-6 lg:gap-10 p-6 lg:p-8 rounded-2xl border border-border hover:border-foreground/40 hover:bg-card transition"
           >
             <div className="lg:col-span-3">
               <div className="font-mono-quirk text-xs uppercase tracking-widest text-[var(--terracotta)]">
@@ -508,7 +508,7 @@ function Testimonials() {
       </div>
       <div className="grid md:grid-cols-3 gap-6">
         {testimonials.map((t, i) => (
-          <figure key={i} className="rounded-2xl bg-card border border-border p-7 flex flex-col">
+          <figure key={i} className="reveal rounded-2xl bg-card border border-border p-7 flex flex-col">
             <span className="font-display text-5xl text-[var(--terracotta)] leading-none">“</span>
             <blockquote className="mt-2 text-lg leading-relaxed font-display text-foreground/90">
               {t.quote}
@@ -550,7 +550,7 @@ function Contact() {
             <ContactRow label="Based in" value="Zamboanga City, Philippines · Remote" />
             <a
               href="mailto:ardeocampo042490@gmail.com?subject=VA%20enquiry"
-              className="mt-4 w-full inline-flex items-center justify-between rounded-2xl bg-white text-[var(--terracotta)] px-6 py-4 text-base font-medium hover:bg-white/90 transition"
+              className="click-pop relative overflow-hidden mt-4 w-full inline-flex items-center justify-between rounded-2xl bg-white text-[var(--terracotta)] px-6 py-4 text-base font-medium hover:bg-white/90 transition"
             >
               Start a conversation
               <span aria-hidden>→</span>
