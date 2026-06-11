@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import aprilRose from "@/assets/april-rose.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -57,7 +58,6 @@ const experience = [
     period: "Aug 2024 — Present",
     role: "Data & Operations Assistant",
     company: "BIZCAP UK  ·  Remote",
-    original: "Data Entry Specialist",
     bullets: [
       "Owns daily input and reconciliation of high-volume merchant loan data across Orgmeter and BizMate — zero-defect mindset.",
       "Maintains an Excel control sheet for repayments, deductions and exceptions, surfacing anomalies before they become escalations.",
@@ -68,7 +68,6 @@ const experience = [
     period: "2017 — 2024",
     role: "Customer Success & Coordination Lead",
     company: "EMCOR Inc.",
-    original: "Customer Service Officer",
     bullets: [
       "Acted as the human face of the brand for warranty claims, phone inquiries and walk-in concerns across Samsung, Panasonic, Electrolux and more.",
       "Coordinated daily technician dispatch schedules and end-to-end repair workflows — inbound, outbound and follow-through.",
@@ -80,7 +79,6 @@ const experience = [
     period: "2014 — 2017",
     role: "Executive Assistant to Senior Management",
     company: "Sophia Jewellery Inc.",
-    original: "Executive Secretary",
     bullets: [
       "Ran the manager's day: calendar, correspondence, reports and a steady stream of confidential documents.",
       "Planned travel and accommodation end-to-end — itineraries, logistics, and the small details executives shouldn't have to think about.",
@@ -90,10 +88,24 @@ const experience = [
 ];
 
 const toolkit = [
-  "Google Workspace", "Microsoft 365", "Excel · Pivot & VLOOKUP",
-  "Notion", "Trello", "Asana", "ClickUp", "Slack", "Zoom",
-  "Canva", "Calendly", "Zendesk", "Orgmeter", "BizMate",
-  "CRM Hygiene", "Inbox Zero", "Minute-taking", "PO / SO Workflows",
+  { name: "Google Workspace", url: "https://workspace.google.com/dashboard" },
+  { name: "Microsoft 365", url: "https://login.microsoftonline.com/" },
+  { name: "Excel · Pivot & VLOOKUP", url: "https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3A%2F%2Foffice.live.com%2Fstart%2FExcel.aspx" },
+  { name: "Notion", url: "https://www.notion.so/login" },
+  { name: "Trello", url: "https://trello.com/login" },
+  { name: "Asana", url: "https://app.asana.com/-/login" },
+  { name: "ClickUp", url: "https://app.clickup.com/login" },
+  { name: "Slack", url: "https://slack.com/signin" },
+  { name: "Zoom", url: "https://zoom.us/signin" },
+  { name: "Canva", url: "https://www.canva.com/login" },
+  { name: "Calendly", url: "https://calendly.com/login" },
+  { name: "Zendesk", url: "https://www.zendesk.com/login/" },
+  { name: "Orgmeter", url: "https://www.orgmeter.com/" },
+  { name: "BizMate", url: "https://bizmate.biz/" },
+  { name: "CRM Hygiene" },
+  { name: "Inbox Zero" },
+  { name: "Minute-taking" },
+  { name: "PO / SO Workflows" },
 ];
 
 const testimonials = [
@@ -118,6 +130,47 @@ const testimonials = [
 ];
 
 function Index() {
+  useEffect(() => {
+    // Scroll reveal
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    els.forEach((el) => io.observe(el));
+
+    // Click ripple for elements with .click-pop
+    const onClick = (ev: MouseEvent) => {
+      const target = (ev.target as HTMLElement).closest<HTMLElement>(".click-pop");
+      if (!target) return;
+      const rect = target.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${ev.clientX - rect.left - size / 2}px`;
+      ripple.style.top = `${ev.clientY - rect.top - size / 2}px`;
+      const prevPos = getComputedStyle(target).position;
+      if (prevPos === "static") target.style.position = "relative";
+      target.style.overflow = "hidden";
+      target.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    };
+    document.addEventListener("click", onClick);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener("click", onClick);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
