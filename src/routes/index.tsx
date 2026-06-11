@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import aprilRose from "@/assets/april-rose.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -57,7 +58,6 @@ const experience = [
     period: "Aug 2024 — Present",
     role: "Data & Operations Assistant",
     company: "BIZCAP UK  ·  Remote",
-    original: "Data Entry Specialist",
     bullets: [
       "Owns daily input and reconciliation of high-volume merchant loan data across Orgmeter and BizMate — zero-defect mindset.",
       "Maintains an Excel control sheet for repayments, deductions and exceptions, surfacing anomalies before they become escalations.",
@@ -68,7 +68,6 @@ const experience = [
     period: "2017 — 2024",
     role: "Customer Success & Coordination Lead",
     company: "EMCOR Inc.",
-    original: "Customer Service Officer",
     bullets: [
       "Acted as the human face of the brand for warranty claims, phone inquiries and walk-in concerns across Samsung, Panasonic, Electrolux and more.",
       "Coordinated daily technician dispatch schedules and end-to-end repair workflows — inbound, outbound and follow-through.",
@@ -80,7 +79,6 @@ const experience = [
     period: "2014 — 2017",
     role: "Executive Assistant to Senior Management",
     company: "Sophia Jewellery Inc.",
-    original: "Executive Secretary",
     bullets: [
       "Ran the manager's day: calendar, correspondence, reports and a steady stream of confidential documents.",
       "Planned travel and accommodation end-to-end — itineraries, logistics, and the small details executives shouldn't have to think about.",
@@ -90,10 +88,24 @@ const experience = [
 ];
 
 const toolkit = [
-  "Google Workspace", "Microsoft 365", "Excel · Pivot & VLOOKUP",
-  "Notion", "Trello", "Asana", "ClickUp", "Slack", "Zoom",
-  "Canva", "Calendly", "Zendesk", "Orgmeter", "BizMate",
-  "CRM Hygiene", "Inbox Zero", "Minute-taking", "PO / SO Workflows",
+  { name: "Google Workspace", url: "https://workspace.google.com/dashboard" },
+  { name: "Microsoft 365", url: "https://login.microsoftonline.com/" },
+  { name: "Excel · Pivot & VLOOKUP", url: "https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=&rver=7.0.6737.0&wp=MBI_SSL&wreply=https%3A%2F%2Foffice.live.com%2Fstart%2FExcel.aspx" },
+  { name: "Notion", url: "https://www.notion.so/login" },
+  { name: "Trello", url: "https://trello.com/login" },
+  { name: "Asana", url: "https://app.asana.com/-/login" },
+  { name: "ClickUp", url: "https://app.clickup.com/login" },
+  { name: "Slack", url: "https://slack.com/signin" },
+  { name: "Zoom", url: "https://zoom.us/signin" },
+  { name: "Canva", url: "https://www.canva.com/login" },
+  { name: "Calendly", url: "https://calendly.com/login" },
+  { name: "Zendesk", url: "https://www.zendesk.com/login/" },
+  { name: "Orgmeter", url: "https://www.orgmeter.com/" },
+  { name: "BizMate", url: "https://bizmate.biz/" },
+  { name: "CRM Hygiene" },
+  { name: "Inbox Zero" },
+  { name: "Minute-taking" },
+  { name: "PO / SO Workflows" },
 ];
 
 const testimonials = [
@@ -118,6 +130,47 @@ const testimonials = [
 ];
 
 function Index() {
+  useEffect(() => {
+    // Scroll reveal
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    els.forEach((el) => io.observe(el));
+
+    // Click ripple for elements with .click-pop
+    const onClick = (ev: MouseEvent) => {
+      const target = (ev.target as HTMLElement).closest<HTMLElement>(".click-pop");
+      if (!target) return;
+      const rect = target.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${ev.clientX - rect.left - size / 2}px`;
+      ripple.style.top = `${ev.clientY - rect.top - size / 2}px`;
+      const prevPos = getComputedStyle(target).position;
+      if (prevPos === "static") target.style.position = "relative";
+      target.style.overflow = "hidden";
+      target.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    };
+    document.addEventListener("click", onClick);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener("click", onClick);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
@@ -193,14 +246,14 @@ function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] text-white px-6 py-3 text-sm font-medium hover:translate-y-[-1px] transition"
+              className="click-pop relative overflow-hidden inline-flex items-center gap-2 rounded-full bg-[var(--terracotta)] text-white px-6 py-3 text-sm font-medium hover:translate-y-[-1px] transition"
             >
               Book a discovery call
               <span aria-hidden>↗</span>
             </a>
             <a
               href="#services"
-              className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm hover:bg-foreground hover:text-background transition"
+              className="click-pop relative overflow-hidden inline-flex items-center gap-2 rounded-full border border-foreground/20 px-6 py-3 text-sm hover:bg-foreground hover:text-background transition"
             >
               See what I handle
             </a>
@@ -315,7 +368,7 @@ function Services() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
           {services.map((s) => (
-            <article key={s.no} className="bg-card p-8 group hover:bg-background transition">
+            <article key={s.no} className="reveal bg-card p-8 group hover:bg-background transition">
               <div className="flex items-baseline justify-between">
                 <span className="font-mono-quirk text-xs text-muted-foreground">{s.no}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition text-[var(--terracotta)]">→</span>
@@ -360,14 +413,11 @@ function Experience() {
         {experience.map((job, i) => (
           <li
             key={i}
-            className="group grid lg:grid-cols-12 gap-6 lg:gap-10 p-6 lg:p-8 rounded-2xl border border-border hover:border-foreground/40 hover:bg-card transition"
+            className="reveal group grid lg:grid-cols-12 gap-6 lg:gap-10 p-6 lg:p-8 rounded-2xl border border-border hover:border-foreground/40 hover:bg-card transition"
           >
             <div className="lg:col-span-3">
               <div className="font-mono-quirk text-xs uppercase tracking-widest text-[var(--terracotta)]">
                 {job.period}
-              </div>
-              <div className="mt-2 text-sm text-muted-foreground">
-                Originally titled: <span className="italic">{job.original}</span>
               </div>
             </div>
             <div className="lg:col-span-9">
@@ -416,14 +466,28 @@ function Toolkit() {
             </h2>
           </div>
           <div className="lg:col-span-8 flex flex-wrap gap-3 content-start">
-            {toolkit.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-background/25 px-4 py-2 text-sm hover:bg-background hover:text-foreground transition"
-              >
-                {t}
-              </span>
-            ))}
+            {toolkit.map((t) =>
+              t.url ? (
+                <a
+                  key={t.name}
+                  href={t.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="click-pop relative overflow-hidden rounded-full border border-background/25 px-4 py-2 text-sm hover:bg-background hover:text-foreground transition"
+                  title={`Open ${t.name} login`}
+                >
+                  {t.name}
+                  <span aria-hidden className="ml-1.5 opacity-60">↗</span>
+                </a>
+              ) : (
+                <span
+                  key={t.name}
+                  className="rounded-full border border-background/25 px-4 py-2 text-sm opacity-80"
+                >
+                  {t.name}
+                </span>
+              ),
+            )}
           </div>
         </div>
       </div>
@@ -444,7 +508,7 @@ function Testimonials() {
       </div>
       <div className="grid md:grid-cols-3 gap-6">
         {testimonials.map((t, i) => (
-          <figure key={i} className="rounded-2xl bg-card border border-border p-7 flex flex-col">
+          <figure key={i} className="reveal rounded-2xl bg-card border border-border p-7 flex flex-col">
             <span className="font-display text-5xl text-[var(--terracotta)] leading-none">“</span>
             <blockquote className="mt-2 text-lg leading-relaxed font-display text-foreground/90">
               {t.quote}
@@ -486,7 +550,7 @@ function Contact() {
             <ContactRow label="Based in" value="Zamboanga City, Philippines · Remote" />
             <a
               href="mailto:ardeocampo042490@gmail.com?subject=VA%20enquiry"
-              className="mt-4 w-full inline-flex items-center justify-between rounded-2xl bg-white text-[var(--terracotta)] px-6 py-4 text-base font-medium hover:bg-white/90 transition"
+              className="click-pop relative overflow-hidden mt-4 w-full inline-flex items-center justify-between rounded-2xl bg-white text-[var(--terracotta)] px-6 py-4 text-base font-medium hover:bg-white/90 transition"
             >
               Start a conversation
               <span aria-hidden>→</span>
