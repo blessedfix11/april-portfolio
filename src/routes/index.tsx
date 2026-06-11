@@ -419,9 +419,6 @@ function Experience() {
               <div className="font-mono-quirk text-xs uppercase tracking-widest text-[var(--terracotta)]">
                 {job.period}
               </div>
-              <div className="mt-2 text-sm text-muted-foreground">
-                Originally titled: <span className="italic">{job.original}</span>
-              </div>
             </div>
             <div className="lg:col-span-9">
               <h3 className="font-display text-3xl leading-tight">{job.role}</h3>
@@ -469,14 +466,28 @@ function Toolkit() {
             </h2>
           </div>
           <div className="lg:col-span-8 flex flex-wrap gap-3 content-start">
-            {toolkit.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-background/25 px-4 py-2 text-sm hover:bg-background hover:text-foreground transition"
-              >
-                {t}
-              </span>
-            ))}
+            {toolkit.map((t) =>
+              t.url ? (
+                <a
+                  key={t.name}
+                  href={t.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="click-pop relative overflow-hidden rounded-full border border-background/25 px-4 py-2 text-sm hover:bg-background hover:text-foreground transition"
+                  title={`Open ${t.name} login`}
+                >
+                  {t.name}
+                  <span aria-hidden className="ml-1.5 opacity-60">↗</span>
+                </a>
+              ) : (
+                <span
+                  key={t.name}
+                  className="rounded-full border border-background/25 px-4 py-2 text-sm opacity-80"
+                >
+                  {t.name}
+                </span>
+              ),
+            )}
           </div>
         </div>
       </div>
