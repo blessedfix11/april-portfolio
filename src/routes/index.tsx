@@ -223,12 +223,15 @@ function Hero() {
             <img
               src={aprilRose.url}
               alt="April Rose Deocampo"
-              className="w-16 h-16 lg:w-20 lg:h-20 rounded-full object-cover border border-border shadow-sm rotate-[-3deg]"
+              className="w-24 h-24 lg:w-32 lg:h-32 rounded-full object-cover border border-border shadow-sm rotate-[-3deg]"
             />
-            <div className="flex items-center gap-3 text-xs font-mono-quirk uppercase tracking-widest text-muted-foreground">
+            <a
+              href="#services"
+              className="click-pop relative overflow-hidden flex items-center gap-3 text-xs font-mono-quirk uppercase tracking-widest text-muted-foreground hover:text-foreground transition rounded-full px-2 py-1"
+            >
               <span className="w-2 h-2 rounded-full bg-[var(--sage)] animate-pulse" />
               Available · Remote · PH-based VA → Worldwide
-            </div>
+            </a>
           </div>
           <h1 className="font-display mt-6 text-[12vw] sm:text-7xl lg:text-[8.5rem] leading-[0.95] tracking-tighter">
             The quiet
@@ -545,11 +548,17 @@ function Contact() {
             </p>
           </div>
           <div className="lg:col-span-5 space-y-4">
-            <ContactRow label="Email" value="ardeocampo042490@gmail.com" href="mailto:ardeocampo042490@gmail.com" />
+            <ContactRow
+              label="Email"
+              value="ardeocampo042490@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=ardeocampo042490@gmail.com"
+            />
             <ContactRow label="Phone" value="+63 955 460 8537" href="tel:+639554608537" />
             <ContactRow label="Based in" value="Zamboanga City, Philippines · Remote" />
             <a
-              href="mailto:ardeocampo042490@gmail.com?subject=VA%20enquiry"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=ardeocampo042490@gmail.com&su=VA%20enquiry"
+              target="_blank"
+              rel="noopener noreferrer"
               className="click-pop relative overflow-hidden mt-4 w-full inline-flex items-center justify-between rounded-2xl bg-white text-[var(--terracotta)] px-6 py-4 text-base font-medium hover:bg-white/90 transition"
             >
               Start a conversation
@@ -569,7 +578,19 @@ function ContactRow({ label, value, href }: { label: string; value: string; href
       <span className="font-display text-lg text-right">{value}</span>
     </div>
   );
-  return href ? <a href={href} className="block hover:opacity-90 transition">{inner}</a> : inner;
+  const isExternal = href?.startsWith("http");
+  return href ? (
+    <a
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className="block hover:opacity-90 transition"
+    >
+      {inner}
+    </a>
+  ) : (
+    inner
+  );
 }
 
 function Footer() {
