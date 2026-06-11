@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import aprilRose from "@/assets/april-rose.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -165,9 +166,16 @@ function Hero() {
       <div className="absolute inset-0 grain pointer-events-none" />
       <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-12 gap-10 relative">
         <div className="lg:col-span-8">
-          <div className="flex items-center gap-3 text-xs font-mono-quirk uppercase tracking-widest text-muted-foreground">
-            <span className="w-2 h-2 rounded-full bg-[var(--sage)] animate-pulse" />
-            Available · Remote · PH-based VA → Worldwide
+          <div className="flex items-center gap-4">
+            <img
+              src={aprilRose.url}
+              alt="April Rose Deocampo"
+              className="w-16 h-16 lg:w-20 lg:h-20 rounded-full object-cover border border-border shadow-sm rotate-[-3deg]"
+            />
+            <div className="flex items-center gap-3 text-xs font-mono-quirk uppercase tracking-widest text-muted-foreground">
+              <span className="w-2 h-2 rounded-full bg-[var(--sage)] animate-pulse" />
+              Available · Remote · PH-based VA → Worldwide
+            </div>
           </div>
           <h1 className="font-display mt-6 text-[12vw] sm:text-7xl lg:text-[8.5rem] leading-[0.95] tracking-tighter">
             The quiet
